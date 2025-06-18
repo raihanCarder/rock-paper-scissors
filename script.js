@@ -1,67 +1,101 @@
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+const gameScoreText = document.getElementById("game-score");
+const streakText = document.getElementById("streak");
+const computerChoiceText = document.getElementById("computer-choice-text");
+const resetBtn = document.getElementById("reset-score");
+const buttons = [rockBtn, paperBtn, scissorsBtn];
+
 let humanScore = 0;
 let computerScore = 0;
-let rounds = 0;
+let streak = 0;
 
 function getComputerChoice() {
     const randomNum = Math.floor((Math.random() * 3) + 1);
 
     if (randomNum === 1) {
-        return "scissors";
+        return "Scissors";
     }
     else if (randomNum === 2) {
-        return "rock";
+        return "Rock";
     }
     else {
-        return "paper";
+        return "Paper";
     }
-}
-
-function getHumanChoice() {
-    let playerChoice = window.prompt("Rock Paper or Scissors?");
-    return playerChoice.toLowerCase();
 }
 
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice === "scissors" && computerChoice === "paper") {
-        humanScore++;
-        return;
+    if (humanChoice === "Scissors" && computerChoice === "Paper") {
+        return "win";
     }
-    else if (humanChoice === "paper" && computerChoice === "rock") {
-        humanScore++;
-        return;
+    else if (humanChoice === "Paper" && computerChoice === "Rock") {
+        return "win";
     }
-    else if (humanChoice === "rock" && computerChoice === "scissors") {
-        humanScore++;
-        return;
+    else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+        return "win";
     }
     else if (humanChoice === computerChoice) {
-        return;
+        return "tie";
     }
     else {
-        computerScore++;
-        return;
+        return "loss";
     }
 }
 
-while (rounds < 5) {
-    const humanChoice = getHumanChoice();
+function getHumanChoice(btn) {
+    if (btn === rockBtn) {
+        return "Rock";
+    } else if (btn === paperBtn) {
+        return "Paper";
+    }
+    else {
+        return "Scissors";
+    }
+}
+
+function playGame(humanChoice) {
+    const choice = getHumanChoice(humanChoice);
     const computerChoice = getComputerChoice();
+    const results = playRound(choice, computerChoice);
 
-    console.log(humanChoice);
-    console.log(computerChoice);
-    playRound(humanChoice, computerChoice);
-
-    rounds++;
-
-    if (rounds === 5) {
-        if (humanScore > computerScore) {
-            console.log("YOU WIN!!");
-        }
-        else {
-            console.log("YOU LOSE!");
-        }
+    if (results === "win") {
+        humanScore++;
+        streak++;
+        computerChoiceText.textContent = `You Picked: ${choice} - Computer Picked: ${computerChoice} - You Win!`;
     }
-
-    console.log(`Human: ${humanScore} Robo: ${computerScore}`);
+    else if (results === "loss") {
+        computerScore++;
+        streak = 0;
+        computerChoiceText.textContent = `You Picked: ${choice} - Computer Picked: ${computerChoice} - You Lose!`;
+    }
+    else {
+        computerChoiceText.textContent = `You Picked: ${choice} - Computer Picked: ${computerChoice} - Thus Tie!`;
+    }
+    updateText();
+    return;
 }
+
+function updateText() {
+    gameScoreText.textContent = `Computer: ${computerScore} | Player: ${humanScore}`;
+    streakText.textContent = `Winning Streak 🔥: ${streak}`;
+}
+
+function resetScore() {
+    computerScore = 0;
+    humanScore = 0;
+    streak = 0;
+    computerChoiceText.textContent = "";
+
+    updateText();
+}
+
+buttons.forEach((btn) => {
+    btn.addEventListener("click", () => playGame(btn));
+});
+
+resetBtn.addEventListener("click", resetScore);
+
+updateText();
+
 

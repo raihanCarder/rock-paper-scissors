@@ -1,0 +1,132 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-background-color: #F4F6FA;
+    --app-background-color: #EAF0FB;
+    --text-color: black;
+    --score-board-text-color: #FF6F61;
+    --selection-text-color: #FF6F61;
+    --computer-choice-text-color: black;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--main-background-color);
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--app-background-color);
+    flex-direction: column;
+    width: fit-content;
+    padding: 20px 40px;
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    gap: 5px;
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 60px;
+    font-family: 'Luckiest Guy', sans-serif;
+    color: var(--text-color);
+}
+
+.score-board {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--score-board-text-color);
+    gap: 3px;
+}
+
+h3 {
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+#game-score {
+    text-align: center;
+}
+
+#computer-choice-text {
+    color: var(--computer-choice-text-color);
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.player-selections {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+button {
+    font-size: 70px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #FF6F61;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #D9534F;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+#select-text {
+    color: var(--selection-text-color);
+    margin-bottom: 2px;
+}
+
+
+a {
+    color: var(--text-color);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#rules {
+    margin-top: 5px;
+}
+
+#reset-score {
+    font-size: 18px;
+    padding: 4px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#streak {
+    font-weight: bold;
+}

@@ -5,9 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.google.com/specimen/Luckiest+Guy" rel="stylesheet">
+    <link href="https://fonts.google.com/specimen/Nunito" rel="stylesheet">
 </head>
 
 <body>
+    <div class="game-container">
+        <h1>Rock Paper Scissors</h1>
+        <p>Choose one of the options and try and win as much as possible!</p>
+        <div class="score-board">
+            <h3>SCORE BOARD</h3>
+            <h4 id="game-score"></h4>
+            <p id="streak"></p>
+        </div>
+        <p id="computer-choice-text"></p>
+        <p id="select-text"><strong>Select one of the following:</strong></p>
+        <div class="player-selections">
+            <button id="rock">🪨</button>
+            <button id="paper">📄</button>
+            <button id="scissors">✂️</button>
+        </div>
+        <button id="reset-score">Reset Score</button>
+        <p id="rules"><a href="https://en.wikipedia.org/wiki/Rock_paper_scissors" target="_blank">Rules</a></p>
+    </div>
     <script src="script.js"></script>
 </body>
 
